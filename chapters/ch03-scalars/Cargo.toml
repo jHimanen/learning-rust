@@ -1,0 +1,19 @@
+[package]
+name = "ch03-scalars"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+# The fixme examples don't compile until you fix them. `required-features` keeps them out of
+# `cargo test` and `cargo build`. Run one with:
+#   cargo run -p ch03-scalars --example fixme_01 --features fixme
+[features]
+fixme = []
+
+[[example]]
+name = "fixme_01"
+required-features = ["fixme"]
+
+[[example]]
+name = "fixme_02"
+required-features = ["fixme"]
