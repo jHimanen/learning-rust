@@ -95,15 +95,17 @@ Useful phrases:
 - *"explain this compiler error"*: walks through reading the error with you
 - *"review my solution for ch03"*: feedback on correctness, idioms and performance, without
   rewriting your code
-- *"write chapter N"*: authors the next chapter on a branch and opens a PR
-  against `main`
+- *"write chapter N"* (or `/write-chapter N`): authors the next chapter on a branch and
+  opens a PR against `main`
 
 ## Repo layout
 
 ```
 Cargo.toml          workspace root: every chapter crate + your project build from here
 SYLLABUS.md         the full chapter plan
-CLAUDE.md           instructions for Claude Code (tutor mode, how chapters are written)
+CLAUDE.md           instructions for Claude Code (tutor mode, file ownership)
+.claude/            Claude Code config: the write-chapter skill, an ownership-guard hook,
+                    and the concept ledger / minipolars API reference
 chapters/
   ch01-compiling/   README + a playground (bare rustc, no Cargo)
   chNN-topic/       one crate per chapter:
@@ -126,7 +128,7 @@ files, which is what keeps `git pull origin main` conflict-free.
 | Tutorial (don't edit) | Yours |
 |---|---|
 | `chapters/*/README.md`, `chapters/*/tests/`, `chapters/*/examples/demo_*.rs`, `chapters/*/milestone/` | `chapters/*/src/` (the stubs you complete), `chapters/*/examples/fixme_*.rs` (the broken programs you repair) |
-| `README.md`, `SYLLABUS.md`, `CLAUDE.md`, `Cargo.toml`, `data/`, `project/README.md` | `project/minipolars/`, `notes/`, `chapters/ch01-compiling/playground/` |
+| `README.md`, `SYLLABUS.md`, `CLAUDE.md`, `.claude/`, `Cargo.toml`, `data/`, `project/README.md` | `project/minipolars/`, `notes/`, `chapters/ch01-compiling/playground/` |
 
 To experiment with a demo, copy it first, e.g. to `examples/my_overflow.rs`. Any `.rs` file
 in `examples/` is automatically an example you can run with `--example my_overflow`.
