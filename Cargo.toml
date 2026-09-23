@@ -1,0 +1,10 @@
+# The workspace root. Every crate in this repo is built from here and shares one
+# `target/` directory. This file is written once and never edited again: new
+# chapters and your own project are picked up by the globs below.
+# (What a workspace is: chapters/ch02-cargo/README.md)
+
+[workspace]
+resolver = "3"
+members = ["chapters/*", "project/*"]
+# ch01 is done with bare `rustc`, without Cargo, so it is not a crate.
+exclude = ["chapters/ch01-compiling"]
