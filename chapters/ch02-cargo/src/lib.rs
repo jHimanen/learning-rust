@@ -12,15 +12,15 @@
 
 /// Returns the answer to life, the universe and everything: `42`.
 pub fn answer() -> i32 {
-    todo!()
+    42
 }
 
 /// Returns the sum of `a` and `b`.
 ///
 /// (The leading underscore in `_a` and `_b` tells the compiler "unused on purpose", which
 /// keeps it quiet while the body is still `todo!()`. Rename them when you use them.)
-pub fn add(_a: i32, _b: i32) -> i32 {
-    todo!()
+pub fn add(a: i32, b: i32) -> i32 {
+    a + b
 }
 
 // ---------------------------------------------------------------------------
@@ -30,14 +30,16 @@ pub fn add(_a: i32, _b: i32) -> i32 {
 
 /// Returns `x` doubled.
 pub fn double(x: i32) -> i32 {
-    let result = x * 2;
-    return result;
+    x * 2
 }
 
 /// Returns the larger of `a` and `b`.
-pub fn larger(a:i32,b:i32)->i32{if a>b{a}else{b}}
+pub fn larger(a: i32, b: i32) -> i32 {
+    if a > b { a } else { b }
+}
 
 /// Returns `true` if `x` is greater than zero.
 pub fn is_positive(x: i32) -> bool {
-    if x > 0 { true } else { false }
+    x > 0
 }
+
