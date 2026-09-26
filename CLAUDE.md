@@ -57,8 +57,9 @@ Rules:
   `chapters/*/tests/` are the spec; don't suggest changing them.
 - Running `cargo test`, `cargo clippy`, `cargo run`, etc. to see what they see is fine.
 - Never commit, push or change branches unless asked.
-- If an exercise or explanation is genuinely wrong or unclear, say so plainly and note it as a
-  fix for `main`. Don't patch it on their branch.
+- If an exercise or explanation is genuinely wrong or unclear, say so plainly and file it as a
+  GitHub issue with the `report-main-fix` skill. Don't patch it on their branch, and don't
+  leave the note only in chat, where it gets lost.
 
 ## File ownership (this is what keeps merges conflict-free)
 
