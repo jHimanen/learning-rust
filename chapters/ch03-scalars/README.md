@@ -229,6 +229,39 @@ cargo run -p ch03-scalars --example demo_chars
   not every `u32` is a valid char).
 - Note the quotes: `'a'` is a `char` and `"a"` is a string. They're different types.
 
+### Under the hood: a char is just a number
+
+Memory only holds numbers, so a `char` is a number too: a `u32`-sized integer that Rust
+promises is a valid code point. **Unicode is a lookup table** from numbers to symbols, and
+ASCII is its first 128 entries (0–127). The symbol only appears when something, like your
+terminal, draws the number using a font.
+
+So `'A' as u32` doesn't *convert* anything. It reads back the number that was already stored
+(65), exactly like Python's `ord('A')`. `65u8 as char` is Python's `chr(65)`. And `b'A'` is
+just another way of writing the number 65 as a `u8`. Since they're numbers, you can compare
+them, subtract them and do bit operations on them like any other integer (after an `as` to
+get both sides to the same type).
+
+An excerpt of the ASCII table:
+
+| Symbols | Decimal values |
+|---|---|
+| space | `32` |
+| `'0'` `'1'` `'2'` … `'9'` | `48` `49` `50` … `57` |
+| `'A'` `'B'` `'C'` … `'Z'` | `65` `66` `67` … `90` |
+| `'a'` `'b'` `'c'` … `'z'` | `97` `98` `99` … `122` |
+
+Each block is **consecutive**: the table was designed so that the next digit or letter is
+always the next number. The layout was also chosen with the *binary* values in mind, which
+decimal hides. To see the patterns, print some byte literals with `{:08b}` (from §3): the
+digits, a letter in both cases, a few letters in a row. The end of `demo_chars` starts you
+off, and you can copy it to `examples/my_scratch.rs` to explore further (see "Predict, then
+run" below).
+
+Everything in ASCII fits in 7 bits, and UTF-8 stores those code points as a single byte with
+the same value. That's why ASCII text is also valid UTF-8. Code points above 127 need more
+bytes.
+
 ---
 
 ## 8. Bitwise operations
