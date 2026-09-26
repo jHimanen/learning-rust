@@ -5,7 +5,7 @@
 // Fixed means: it compiles and prints "counted to 3".
 
 fn main() {
-    let count = 0;
+    let mut count = 0;
     count += 1;
     count += 1;
     count += 1;
