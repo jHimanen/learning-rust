@@ -16,7 +16,7 @@ C, Python).
 | 1 | **What compiling means.** `rustc` by hand, inspecting the binary (`file`, `otool`, `nm`), debug vs optimized, Python's interpreter vs a native executable, rustup and toolchains. *Getting started with your own branch.* | available |
 | 2 | **Cargo & tooling.** `cargo new`, `Cargo.toml`/`Cargo.lock`, `target/`, check/build/run/test, profiles, dependencies, workspaces, clippy, rustfmt, docs, rust-analyzer in nvim, how the exercises work. ★ create `minipolars` | available |
 | 3 | **Scalars & bits.** Integer widths, two's complement, overflow, casting, floats (IEEE 754), `char`, bitwise operations, formatting. | available |
-| 4 | **Functions & control flow.** Expressions vs statements, `if` as a value, `loop`/`while`/`for`, ranges, labeled breaks. ★ first statistics functions | |
+| 4 | **Functions & control flow.** Expressions vs statements, `if` as a value, `loop`/`while`/`for`, ranges, labeled breaks. ★ first statistics functions | available |
 | 5 | **Tuples, arrays & a first look at memory.** Contiguous layout, `size_of`, stack-allocated arrays. | |
 
 ## Part 1: Memory & ownership (the heart of Rust)

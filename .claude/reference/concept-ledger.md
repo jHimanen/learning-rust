@@ -29,3 +29,18 @@ not yet explained, so exercises must not rely on it).
   expression, not yet used in exercises), `Option` (the returned value from `checked_*`,
   not used), `std::hint::black_box`, tuples (`overflowing_add`), `for` loops over array
   literals and `{:?}` Debug formatting (in demos), lint attributes (`#[allow(clippy::...)]`).
+- **ch04 (control flow):** expressions vs statements, blocks as values, `;` and `()` (unit,
+  zero-sized), `if`/`else if`/`else` as an expression (same type in every branch, `else`
+  required when used as a value, no truthiness), functions: typed params, `-> T`, `return`
+  for early exit, no return type = `()`, `mut` parameters, calling other functions,
+  recursion (mentioned). `loop` with `break value`, `while`, `for` over ranges, `continue`,
+  ranges `a..b`, `a..=b`, `a..` (and empty ranges), `.rev()`/`.step_by()` on ranges,
+  labeled `break`/`continue` (`'outer:`), labeled blocks with `break 'label value`, the
+  never type `!` (why `todo!()`/`panic!` fit any type), `is_multiple_of` (clippy's
+  `manual_is_multiple_of`). Under the hood: ARM64 calling convention (args in `x0`, `x1`...,
+  return in `x0`, `w` = low 32 bits), `csel` for `if`, loops as backward branches, debug vs
+  optimized assembly. ★ minipolars gets a library crate (`src/lib.rs` next to `main.rs`).
+  *Previews:* slices `&[f64]` (`.len()`, indexing, `for &x in values`, reference vs value,
+  properly in ch05/ch08/ch09), `&'static str` return type (ch10), `for` desugaring to
+  `loop` + `next()` (ch20), `const` slices and `assert!` with a message (in the milestone
+  test), `#[inline(never)]` (in `demo_asm`), library + binary in one package (ch15).

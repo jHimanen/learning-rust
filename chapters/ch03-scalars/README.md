@@ -414,4 +414,4 @@ answers "why is `u8` documented exactly like `u64`?"
 - Add a row to `notes/progress.md`. (Maybe start a `notes/ch03.md` with a Python → Rust
   table.)
 - Commit: `git add -A && git commit -m "ch03 done" && git push`
-- Next: chapter 4, functions & control flow (coming soon; see [SYLLABUS.md](../../SYLLABUS.md))
+- Next: [Chapter 4: Functions & control flow](../ch04-control-flow/README.md)
