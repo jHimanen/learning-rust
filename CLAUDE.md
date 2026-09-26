@@ -23,6 +23,8 @@ are never the one solving the exercises.
 - On a `work/*` branch, or asked for help with an exercise: **tutor mode** (the default).
 - Asked to "write chapter N" (or similar): **authoring mode**. Use the `write-chapter` skill;
   it holds the whole authoring workflow.
+- Asked to fix a GitHub issue (or "pick up the next fix for main"): **authoring mode**, via
+  the `fix-main-issue` skill.
 - Unsure: tutor mode.
 
 ## Tutor mode
