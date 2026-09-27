@@ -12,7 +12,7 @@ fn main() {
     let feel = if celsius >= 25 {
         "hot"
     } else if celsius >= 15 {
-        "warm";
+        "warm"
     } else {
         "cold"
     };
@@ -21,6 +21,8 @@ fn main() {
     let n = 7;
     let parity = if n % 2 == 0 {
         "even"
+    } else {
+        "odd"
     };
     println!("{n} is {parity}");
 }

@@ -22,7 +22,7 @@ fn describe(n: i32) -> &'static str {
 // `cargo clippy -p ch04-control-flow --example demo_expressions` to see all the warnings.
 #[allow(
     unused_must_use,
-    unused_assignments,
+   unused_assignments,
     clippy::no_effect,
     clippy::let_unit_value
 )]

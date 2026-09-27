@@ -9,16 +9,19 @@
 //   first multiple of 7 above 100 = 105
 
 fn main() {
+    let mut total = 0;
     for i in 1..=10 {
-        let mut total = 0;
         total += i;
     }
     println!("sum of 1..=10 = {total}");
+    
+    total = 101;
 
-    let first = for n in 101.. {
-        if n % 7 == 0 {
-            break n;
+    let first = loop {
+        if total % 7 == 0 {
+            break total;
         }
+        total += 1
     };
     println!("first multiple of 7 above 100 = {first}");
 }
