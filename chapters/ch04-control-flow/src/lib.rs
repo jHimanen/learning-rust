@@ -22,8 +22,18 @@
 /// | below 60 | `'F'` |
 ///
 /// Write the body as a **single `if` expression**: no `return`, no `let`.
-pub fn grade(_score: u32) -> char {
-    todo!()
+pub fn grade(score: u32) -> char {
+    if score >= 90 {
+        'A'
+    } else if score >= 80 {
+        'B'
+    } else if score >= 70 {
+        'C'
+    } else if score >= 60 {
+        'D'
+    } else {
+        'F'
+    }
 }
 
 /// Returns `true` if `year` is a leap year in the Gregorian calendar.
@@ -34,8 +44,8 @@ pub fn grade(_score: u32) -> char {
 ///
 /// Try it twice: once as an `if`/`else if` chain, and once as a single `bool` expression with
 /// `&&` and `||` (chapter 3). Keep whichever reads better to you.
-pub fn is_leap_year(_year: u32) -> bool {
-    todo!()
+pub fn is_leap_year(year: u32) -> bool {
+    year.is_multiple_of(400) || (year.is_multiple_of(4) && !year.is_multiple_of(100))
 }
 
 /// Returns the median of three numbers: the one in the middle once they're sorted.
@@ -43,8 +53,22 @@ pub fn is_leap_year(_year: u32) -> bool {
 /// `median3(3, 1, 2)` is `2`, and `median3(5, 5, 1)` is `5`.
 ///
 /// Use `if` expressions and comparisons only: no `.max()`, `.min()`, arrays or sorting.
-pub fn median3(_a: i32, _b: i32, _c: i32) -> i32 {
-    todo!()
+pub fn median3(a: i32, b: i32, c: i32) -> i32 {
+    if a <= b {
+        if c <= a {
+            a
+        } else if c >= b {
+            b
+        } else {
+            c
+        }
+    } else if c <= b {
+        b
+    } else if c >= a {
+        a
+    } else {
+        c
+    }
 }
 
 // ===========================================================================
@@ -54,8 +78,12 @@ pub fn median3(_a: i32, _b: i32, _c: i32) -> i32 {
 /// Returns `n!` = 1 × 2 × ... × `n`. By definition, `0!` is 1.
 ///
 /// Use a `for` loop over a range. You may assume `n <= 20` (21! doesn't fit in a `u64`).
-pub fn factorial(_n: u32) -> u64 {
-    todo!()
+pub fn factorial(n: u32) -> u64 {
+    let mut result: u64 = 1;
+    for i in 1..=n as u64 {
+        result *= i;
+    }
+    result
 }
 
 /// Returns how many decimal digits `n` has: `count_digits(4096)` is `4`.
@@ -63,8 +91,15 @@ pub fn factorial(_n: u32) -> u64 {
 /// Careful: `0` has one digit. A `while` loop is the obvious tool, and it gets `0` wrong.
 /// Rust has no `do ... while`, but a `loop` with a `break` at the end of its body does the
 /// same job.
-pub fn count_digits(_n: u64) -> u32 {
-    todo!()
+pub fn count_digits(mut n: u64) -> u32 {
+    let mut count = 1;
+    loop {
+        n /= 10;
+        if n == 0 {
+            break count;
+        }
+        count += 1;
+    }
 }
 
 /// Returns the greatest common divisor of `a` and `b`, with Euclid's algorithm:
@@ -74,8 +109,13 @@ pub fn count_digits(_n: u64) -> u32 {
 /// `gcd(48, 18)` is `6`. `gcd(a, 0)` is `a`, and `gcd(0, 0)` is `0`.
 ///
 /// Use a `while` loop. (You'll need a temporary variable to do the replacement.)
-pub fn gcd(_a: u64, _b: u64) -> u64 {
-    todo!()
+pub fn gcd(mut a: u64, mut b: u64) -> u64 {
+    while b != 0 {
+        let residual = a % b;
+        a = b;
+        b = residual;
+    }
+    a
 }
 
 /// Counts the steps of the Collatz sequence from `n` down to 1.
@@ -85,8 +125,17 @@ pub fn gcd(_a: u64, _b: u64) -> u64 {
 ///
 /// You may assume `n >= 1`. (Nobody has proved that every start reaches 1, but every number
 /// anyone has tried does.)
-pub fn collatz_steps(_n: u64) -> u32 {
-    todo!()
+pub fn collatz_steps(mut n: u64) -> u32 {
+    let mut step_count = 0;
+    while n > 1 {
+        if n.is_multiple_of(2) {
+            n /= 2;
+        } else {
+            n = 3 * n + 1;
+        }
+        step_count += 1;
+    }
+    step_count
 }
 
 /// Returns `true` if `n` is prime: greater than 1, and divisible only by 1 and itself.
@@ -97,8 +146,18 @@ pub fn collatz_steps(_n: u64) -> u32 {
 /// `u32`. Trying every divisor up to `n` means 4 billion divisions (minutes in a debug build).
 /// If `n` has a divisor, then it has one that is no bigger than √n. Why? And how do you write
 /// "d ≤ √n" without floats? Watch for overflow (chapter 3) in whatever you come up with.
-pub fn is_prime(_n: u32) -> bool {
-    todo!()
+pub fn is_prime(n: u32) -> bool {
+    if n < 2 {
+        return false;
+    }
+    let mut d = 2;
+    while d <= n / d {
+        if (n).is_multiple_of(d) {
+            return false;
+        }
+        d += 1;
+    }
+    true
 }
 
 /// Returns the smallest power of two (1, 2, 4, 8, ...) that is `>= n`.
@@ -108,8 +167,14 @@ pub fn is_prime(_n: u32) -> bool {
 ///
 /// Make the whole function body a single `loop` that produces the answer with `break value`.
 /// (Don't call `u64::next_power_of_two`, which does this for you.)
-pub fn smallest_power_of_two_at_least(_n: u64) -> u64 {
-    todo!()
+pub fn smallest_power_of_two_at_least(n: u64) -> u64 {
+    let mut result = 1;
+    loop {
+        if result >= n {
+            break result;
+        }
+        result *= 2;
+    }
 }
 
 /// ★ Returns the integer square root of `n`: the largest `r` with `r * r <= n`.
@@ -126,8 +191,21 @@ pub fn smallest_power_of_two_at_least(_n: u64) -> u64 {
 ///   `mid * mid`?
 ///
 /// (Don't call `u64::isqrt`.)
-pub fn isqrt(_n: u64) -> u64 {
-    todo!()
+pub fn isqrt(n: u64) -> u64 {
+    if n < 2 {
+        return n;
+    }
+    let mut lo = 0;
+    let mut hi = n;
+    while hi - lo > 1 {
+        let mid = lo + (hi - lo) / 2;
+        if mid <= n / mid {
+            lo = mid;
+        } else {
+            hi = mid;
+        }
+    }
+    lo
 }
 
 // ===========================================================================
@@ -142,8 +220,17 @@ pub fn isqrt(_n: u64) -> u64 {
 /// and for each candidate, loop over the divisors. As soon as one divisor fails, move on to the
 /// next candidate with a **labeled `continue`**. (The tests only go up to `k = 12`: brute force
 /// is too slow beyond that, and the math that isn't slow is a different exercise.)
-pub fn smallest_multiple(_k: u64) -> u64 {
-    todo!()
+pub fn smallest_multiple(k: u64) -> u64 {
+    let mut candidate = k.saturating_sub(1);
+    'candidates: loop {
+        candidate += 1;
+        for divisor in (2..=k).rev() {
+            if !candidate.is_multiple_of(divisor) {
+                continue 'candidates;
+            }
+        }
+        break candidate;
+    }
 }
 
 /// Finds a Pythagorean triple `a < b < c` (so `a² + b² = c²`) whose perimeter
@@ -158,6 +245,16 @@ pub fn smallest_multiple(_k: u64) -> u64 {
 /// Write the search as a **labeled block**, `'search: { ... }`, whose value is the answer:
 /// `break 'search product` when you find a triple, and `0` as the block's last expression.
 /// Careful with `c = perimeter - a - b`: these are unsigned numbers.
-pub fn pythagorean_product(_perimeter: u64) -> u64 {
-    todo!()
+pub fn pythagorean_product(perimeter: u64) -> u64 {
+    'search: {
+        for a in 1..=(perimeter / 3) {
+            for b in (a + 1)..=((perimeter - a) / 2) {
+                let c = perimeter - a - b;
+                if a * a + b * b == c * c {
+                    break 'search a * b * c;
+                }
+            }
+        }
+        0
+    }
 }
